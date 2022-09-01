@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset = "utf-8">
+
+ <title>مدیریت ساختمان</title>
+ <link rel = "stylesheet" href = "styles.css">
+ <link rel="icon" href="images/apartment-management.png">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+
+ </head>
+ <body id="body-pd" >
+
+  <div class="m-4">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                
+                <div class="nav_logo nav_logo-name ml-auto " >
+                  <p>مدیریت ساختمان</p>
+              </div>
+              <div class="nav_logo-name">
+                <a href="#" >تماس با مدیر</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+  <div class="l-navbar0 ml-auto" id="nav-bar">
+    <nav class="nav0">
+        <div> 
+            
+            
+            <div class="nav_list"> 
+            
+              <a href="index-tenant.html" class="nav_link0 active">
+              <span class="nav_name0">گزارش پرداخت ها</span> </a>
+
+              <a href="pay-charge.html" class="nav_link0"> 
+                <span class="nav_name0">پرداخت شارژ</span> </a>
+  
+              <a href="pay-rent.html" class="nav_link0"> 
+                <span class="nav_name0">پرداخت اجاره</span> </a>
+
+              <a href="edit.html" class="nav_link0">
+              <span class="nav_name0">ویراش اطلاعات</span> </a>
+              
+              <a href="login-form.html" class="nav_link0">
+              <span class="nav_name0">خروج</span> </a>
+          </div>
+        </div> 
+    </nav>
+</div>
+
+    <div class="container" id="profile" style="border-style: solid;">
+      <div class="container-form container-fluid py-5 h-100 ">
+        <div class="row vertical-center-row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-6 mb-4 mb-lg-0 align-items-center">
+            <div class="card mb-3 align-items-center" style="border-radius: .5rem;">
+              <div class="align-items-center row g-0">
+                <div class="col-md-offset-4 col-md-4 gradient-custom text-white"
+                  style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                  <h4>نام و نام خانوادگی</h4>
+                  <i class="far fa-edit mb-5"></i>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body p-4">
+                    <h4>طبقه و واحد</h4>
+                    
+                    <hr class="mt-0 mb-4">
+                    
+                    <div class="row pt-1">
+                      
+                      <div class="col-6 mb-3">
+                        <h4>بدهی ماه جاری</h4>
+                        <h4>هزینه های مازاد</h4>
+                        <h4>بدهی کل</h4>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chartcontainer">
+      <canvas id="tenantReportChart"></canvas>
+    </div>
+
+
+
+ <script src = "script.js"> </script>
+
+ <script>
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'شارژ پرداخت شده',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [20, 10, 30, 30, 20, 15, 25],
+    },
+    {
+      label: 'اجاره پرداخت شده',
+      backgroundColor: 'rgb(7,245,63)',
+      borderColor: 'rgb(7,245,63)',
+      data: [30, 25, 35, 60, 50, 30, 45],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('tenantReportChart'),
+    config
+  );
+</script>
+
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
+ </body>
+</html>
