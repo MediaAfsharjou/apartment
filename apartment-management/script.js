@@ -41,12 +41,12 @@ const stackedChart = new Chart(ctx, {
     },
     options: {
         backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',  // Bar 1
-            'rgba(54, 162, 235, 0.5)',  // Bar 2
-            'rgba(255, 206, 86, 0.5)',  // Bar 3
-            'rgba(75, 192, 192, 0.5)',  // Bar 4
-            'rgba(153, 102, 255, 0.5)', // Bar 5
-            'rgba(255, 159, 64, 0.5)'   // Bar 6
+            'rgba(255, 99, 132, 0.5)',  
+            'rgba(54, 162, 235, 0.5)',  
+            'rgba(255, 206, 86, 0.5)',  
+            'rgba(75, 192, 192, 0.5)',  
+            'rgba(153, 102, 255, 0.5)', 
+            'rgba(255, 159, 64, 0.5)'   
         ],
         borderWidth: 1,
         borderColor: '#1c4164',

@@ -24,7 +24,7 @@
 
 </div>
 <div class="form-container">
-    <form action="index.html" method="post" class="form">
+    <form action="" method="post" class="form">
         <div class="form-control">
             
             <input type="email" id="username" placeholder="Email">
@@ -38,13 +38,14 @@
         <div class="form-control">
             <div class="input-group mb-3">
                 <div class="box">
-                    <select class="form-select" id="usertype">
-                        <option selected>نوع کاربر</option>
-                        <option value="admin">مدیر</option>
-                        <option value="resident">ساکن ساختمان</option>
+                    <select class="form-select" id="user_type">
+                        <option name="tenant" value="index-tenant.html">مستاجر</option>
+                        <option name="admin" value="index.html">مدیر</option>
                       </select>
                 </div>
               </div>
+               
+
         </div>
         <div class="d-sm-flex mb-5 align-items-center">
             <div class="checkbox">
@@ -55,7 +56,7 @@
         </label>
         <span class="ml-auto"><a href="forgot-password.html" class="forgot-password">فراموشی رمز</a></span>
         </div>
-        <input type="submit" value="Log In" class="btn btn-block btn-primary">
+        <input type="submit" id="submitform" value="Log In" class="btn btn-block btn-primary">
         
         </form>  
 </div>
@@ -77,5 +78,18 @@
     integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" 
     data-cf-beacon='{"rayId":"737dbbfdebbd90ec","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.6.0","si":100}' 
     crossorigin="anonymous"></script>
+<!--select option redirect-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script type = "text/javascript" language = "javascript">
+     jQuery(document).ready(function() {
+        jQuery("#submitform").click(function() {
+            var user_type_value = $('#user_type').val();
+           var user_type_name = $('#user_type :selected').text(); 
+                window.location = "C:/wamp/www/apartmentmanagement/" + user_type_value;
+    
+        });
+     });
+    </script>
 </body>
 </html>

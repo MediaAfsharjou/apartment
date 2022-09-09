@@ -22,7 +22,7 @@
                   <p>مدیریت ساختمان</p>
               </div>
               <div class="nav_logo-name">
-                <a href="#" >تماس با مدیر</a>
+                <a href="mailto:email@example.com" >تماس با مدیر</a>
             </div>
             </div>
         </div>
@@ -63,24 +63,30 @@
               <div class="align-items-center row g-0">
                 <div class="col-md-offset-4 col-md-4 gradient-custom text-white"
                   style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                  <h4>نام و نام خانوادگی</h4>
-                  <i class="far fa-edit mb-5"></i>
+                  <img src="" alt="Avatar" id="image" class="img-fluid my-5" style="width: 80px;" />
+                  <h4>نام و نام خانوادگی</h4> &nbsp;
+                  <span id="username"></span>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body p-4">
-                    <h4>طبقه و واحد</h4>
+                    <h4>طبقه</h4> &nbsp;
+                    <span id="floor"></span>
+
+                    <h4>واحد</h4> &nbsp;
+                    <span id="unit"></span>
                     
                     <hr class="mt-0 mb-4">
                     
                     <div class="row pt-1">
                       
-                      <div class="col-6 mb-3">
-                        <h4>بدهی ماه جاری</h4>
-                        <h4>هزینه های مازاد</h4>
-                        <h4>بدهی کل</h4>
-                      </div>
+                        <h4>بدهی ماه جاری</h4> &nbsp;
+                        <span id="currentmonth"></span>
+
+                        <h4>هزینه های مازاد</h4> &nbsp;
+                        <span id="expenses"></span>
+
+                        <h4>بدهی کل</h4> &nbsp;
+                        <span id="total"></span>
                     </div>
                     
                   </div>
@@ -96,6 +102,18 @@
     <div class="chartcontainer">
       <canvas id="tenantReportChart"></canvas>
     </div>
+
+  <script>
+    document.getElementById("username").innerHTML=localStorage.getItem("username");
+    document.getElementById("floor").innerHTML=localStorage.getItem("floor");
+    document.getElementById("unit").innerHTML=localStorage.getItem("unit");
+    document.getElementById("contactinfo").innerHTML=localStorage.getItem("contactinfo");
+    document.getElementById("currentmonth").innerHTML=localStorage.getItem("currentmonth");
+    document.getElementById("expenses").innerHTML=localStorage.getItem("expenses");
+    document.getElementById("total").innerHTML=localStorage.getItem("total");
+    document.getElementById("image").src = localStorage.getItem("image");
+
+  </script>
 
 
 
@@ -121,8 +139,8 @@
     },
     {
       label: 'اجاره پرداخت شده',
-      backgroundColor: 'rgb(7,245,63)',
-      borderColor: 'rgb(7,245,63)',
+      backgroundColor: 'rgb(2,245,63)',
+      borderColor: 'rgb(2,245,63)',
       data: [30, 25, 35, 60, 50, 30, 45],
     }]
   };

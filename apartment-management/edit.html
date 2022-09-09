@@ -61,38 +61,46 @@
               <div class="align-items-center row g-0">
                 <div class="col-md-offset-4 col-md-4 gradient-custom text-white"
                   style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  <fieldset style="border: 0;">
 
-                    <form action="#" method="post" class="form">
+                    <form action="index-tenant.html" method="post" class="form">
                         <div class="form-control">
-                          <input type="image" id="profileimage" value="بارگذاری عکس" style="width: max-content;">
+                          
+                          <img src="" class="edit-image" alt="Image preview">
+                          <input type="file" id="file" name="file" accept="image/*" onchange="previewFile()"
+                           class="edit-button" style="width: max-content;">
+                          <label for="file">بارگذاری عکس</label>
                         </div>
                         <div class="form-control">
             
-                            <input type="text" id="username" placeholder="نام و نام خانوادگی" dir="rtl" style="width: max-content;">
+                            <input type="text" id="username" placeholder="نام و نام خانوادگی" dir="rtl" style="width: max-content;" required>
                 
                         </div>
                         <div class="form-control">
             
-                            <input type="number" id="floor" placeholder="طبقه" dir="rtl" style="width: max-content;">
+                            <input type="number" id="floor" placeholder="طبقه" dir="rtl" style="width: max-content;" required>
                 
                         </div>
                         <div class="form-control">
             
-                            <input type="number" id="unit" placeholder="واحد" dir="rtl" style="width: max-content;">
+                            <input type="number" id="unit" placeholder="واحد" dir="rtl" style="width: max-content;" required>
                 
                         </div>
                         <div class="form-control">
             
-                            <input type="text" id="contactinfo" placeholder="اطلاعات تماس" dir="rtl" style="width: max-content;">
+                            <input type="text" id="contactinfo" placeholder="اطلاعات تماس" dir="rtl" style="width: max-content;" required>
                 
                         </div>
                         <div class="form-control">
             
-                            <input type="number" id="password" placeholder="رمز عبور" dir="ltr" style="width: max-content;">
+                            <input type="number" id="password" placeholder="رمز عبور" dir="rtl" style="width: max-content;" required>
                 
                         </div>
+                        
+                          <input type="submit" value="ذخیره تغییرات" class="btn btn-block btn-primary" onclick="getData()"> 
+                         
                     </form>
-                  
+                  </fieldset>
                 </div>
                 
                 </div>
@@ -106,6 +114,48 @@
 
 
  <script src = "script.js"> </script>
+
+ <script>
+   function getData()
+{
+    var username = document.getElementById("username").value;
+    localStorage.setItem("username", username);
+    var floor= document.getElementById("floor").value; 
+    localStorage.setItem("floor", floor);
+    var unit= document.getElementById("unit").value; 
+    localStorage.setItem("unit", unit);
+    var contactinfo= document.getElementById("contactinfo").value; 
+    localStorage.setItem("contactinfo", contactinfo);   
+    var imgPath = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+    // convert image file to base64 string and save to localStorage
+      localStorage.setItem("image", reader.result);
+    }, false);
+
+    if (imgPath) {
+        reader.readAsDataURL(imgPath);
+    }
+}
+ </script>
+
+ <script>
+   function previewFile() {
+  const preview = document.querySelector('img');
+  const file = document.querySelector('input[type=file]').files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener("load", () => {
+    // convert image file to base64 string
+    preview.src = reader.result;
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+ </script>
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
  </body>

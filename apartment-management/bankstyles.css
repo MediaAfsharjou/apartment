@@ -263,7 +263,6 @@
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 0 0 0 0;
-    border: 1px solid var(--border-color);
     border-radius: 10px;
 }
 
@@ -396,7 +395,6 @@ overflow: hidden;}
     align-items: center;
     float: right;
     width: 10%;
-    min-width:fit-content;
     height:30px;
     margin: 15px;
     padding: 0;
@@ -406,7 +404,6 @@ overflow: hidden;}
     border: none;
     border-radius: 3px;
   }
-
 
   input[type="button"]{
     width: 100%;
@@ -437,11 +434,8 @@ overflow: hidden;}
     color: var(--first-color-light);
   }
 
-  table input{
+  input[type="text"]{
     margin: 10px;
-    height: 25px;
-    width: 90%;
-
   }
 
   .dataTables_length {
@@ -492,25 +486,10 @@ overflow: hidden;}
     color: var(--border-color);
   }
 
-  .table-data button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: right;
-    width: 10%;
-    height:30px;
-    margin: 10px;
-    padding: 0;
-    cursor: pointer;
-    background-color: var(--first-color);
-    color: var(--white-color);
-    border: none;
-    border-radius: 3px;
-  }
-
 
   .form-control{
     display: flex;
+    align-items:right;
     justify-content: right;
     width: 100%;
     margin: 15px 0 15px;
@@ -519,7 +498,6 @@ overflow: hidden;}
   .form-control input{
     float: right;
     display: block;
-    direction: rtl;
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
@@ -538,7 +516,7 @@ overflow: hidden;}
   input[type="datetime"]::placeholder, input[type="text"]::placeholder{
     float: right;
   }
-
+  
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -549,63 +527,12 @@ overflow: hidden;}
     margin-bottom: 20px;
   }
 
-  input{
-    display: block;
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 0;
-    font-size: 15px;
-    color: var(--border-color);
-  }
-
-  .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-top: 20px;
-    height: 100%;
-    width: 100%;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor:pointer;
-  }  
-  
-  .box select {
-    background-color: var(--first-color);
-    color: var(--white-color);
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border: none;
-    font-size: 15px;
-    box-shadow: 0 5px 25px var(--shadow-color);
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
-    appearance: none;
-    cursor:pointer;
-  }
-
-  
-  .box select option {
-    padding: 30px;
-    width: fit-content;
-    display: flex;
-    float: right;
-    align-items: right;
-    justify-content: right;
-  }
 
 
   input[type="submit"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height:40px;
     margin: 20px 0;
@@ -619,62 +546,3 @@ overflow: hidden;}
   input[type="submit"]:active{
     transform: scale(0.98);
   }
-
-/* style date mm/dd/yyyy
-::-webkit-datetime-edit { padding: 1em; }
-::-webkit-datetime-edit-fields-wrapper { background: silver; }
-::-webkit-datetime-edit-text { color: var(--first-color-dark); padding: 0 0.3em; }
-::-webkit-datetime-edit-month-field { color: var(--first-color-dark); }
-::-webkit-datetime-edit-day-field { color: var(--first-color-dark); }
-::-webkit-datetime-edit-year-field { color: var(--first-color-dark); }
-::-webkit-inner-spin-button { display: block; }
-::-webkit-calendar-picker-indicator { background: var(--first-color-dark); } */
-
-/*scroll chart*/
-.chartWrapper {
-  position: relative;
-  height: 40%;
-  width: 80%;
-}
-
-.chartWrapper > canvas {
-  position: absolute;
-  left: 0;
-   top: 0;
-}
-
-.chartAreaWrapper {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.edit-button {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.edit-button + label {
-  font-size:var(--normal-font-size);
-  color: var(--color-form-highlight);
-  background-color: var(--first-color-dark);
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.edit-button:focus + label,
-.edit-button + label:hover {
-  background-color: var(--first-color);
-}
-
-.edit-image{
-  font-size:var(--normal-font-size);
-  color: var(--color-form-highlight);
-  border-radius: 5px;
-  display: inline-block;
-  height: 30px;
-  margin: 0 10px;
-}
