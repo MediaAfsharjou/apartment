@@ -81,8 +81,8 @@
     </nav>
 </div>
 
-                    <div class="tablecontainer" id="report">
-                      <div class="table-responsive">
+                    <div class="tablecontainer" id="reportrentcontainer">
+                      <div class="table-responsive" id="reportrenttablecontainer">
 
                       <table id="datatable" name="renttable" class="display table" width="100%">
                             
@@ -100,105 +100,35 @@
                             
                             <tbody>  
                               <tr>  
-                                <td class="table-data">3</td>
+                                <td class="table-data">1</td>
                                 <td class="table-data">1</td>
                                 <td class="table-data">نام</td>
                                 <td class="table-data">1400/1</td>>
-                                <td class="table-data">40</td>
+                                <td class="table-data">60</td>
                                 <td class="table-data">انجام نشد</td>
                                 <td class="table-data">عکس</td>
                                 
                               </tr>  
                               <tr>  
+                                <td class="table-data">1</td>
                                 <td class="table-data">2</td>
-                                <td class="table-data">6</td>
                                 <td class="table-data">نام</td>
                                 <td class="table-data">1400/2</td>>
-                                <td class="table-data">45</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">4</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/3</td>>
-                                <td class="table-data">50</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/4</td>>
-                                <td class="table-data">30</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/5</td>>
-                                <td class="table-data">60</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">3</td>
-                                <td class="table-data">1</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/6</td>>
-                                <td class="table-data">45</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">6</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/7</td>>
-                                <td class="table-data">35</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">4</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/8</td>>
-                                <td class="table-data">25</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/9</td>>
                                 <td class="table-data">60</td>
                                 <td class="table-data">انجام شد</td>
                                 <td class="table-data">عکس</td>
+                                
                               </tr>  
                               <tr>  
                                 <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/10</td>>
-                                <td class="table-data">65</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr> 
-                              <tr>  
-                                <td class="table-data">1</td>
                                 <td class="table-data">5</td>
                                 <td class="table-data">نام</td>
-                                <td class="table-data">1400/11</td>>
-                                <td class="table-data">40</td>
-                                <td class="table-data">انجام نشد</td>
+                                <td class="table-data">1400/3</td>>
+                                <td class="table-data">70</td>
+                                <td class="table-data">انجام شد</td>
                                 <td class="table-data">عکس</td>
-                              </tr> 
+                                
+                              </tr>  
                               
                             </tbody>  
                         </table>
@@ -217,6 +147,34 @@
     
 
  <script src = "script.js"> </script>
+ <script>
+
+  var table = document.getElementById('datatable');
+  var rentDatesArray = [];
+      
+      var date = 3;
+      for (var r = 1, n = table.rows.length; r < n; r++) {
+  
+        rentDatesArray.push(new Date(table.rows[r].cells[date].innerHTML)
+          .toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' }));
+          //.toLocaleDateString('fa-IR')
+      }
+  
+  //sum of all totals from table
+  rentTotalsArray = [];
+          var total = 4;
+          var result_total = 0;
+          for (var r = 1, n = table.rows.length; r < n; r++) {
+            rentTotalsArray.push(parseInt(table.rows[r].cells[total].innerHTML));
+              //result_total = result_total + parseInt(table.rows[r].cells[total].innerHTML);
+          
+          }
+  
+  window.localStorage.setItem('rentDatesArray', JSON.stringify(rentDatesArray));
+  window.localStorage.setItem('rentTotalsArray', JSON.stringify(rentTotalsArray));
+  
+   </script>
+
  
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
  <script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>

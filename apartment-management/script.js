@@ -1,4 +1,5 @@
 //match dates for chart
+
     var table = document.getElementById('datatable');
     var datesArray = [];
     
@@ -9,11 +10,10 @@
         .toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' }));
         //.toLocaleDateString('fa-IR')
 
-      console.log(datesArray);
+      //console.log(datesArray);
     }
 
 //sum of all totals from table
-        var table = document.getElementById('datatable');
         totalArray = [];
         var total = 4;
         var result_total = 0;
@@ -22,12 +22,75 @@
             result_total = result_total + parseInt(table.rows[r].cells[total].innerHTML);
         
         }
-        console.log(result_total);
-        console.log(totalArray);
+        //console.log(result_total);
+        //console.log(totalArray);
 
 
 //report chart admin
 const ctx = document.getElementById('stackedChart').getContext('2d');
+//chevrons
+const moveChart={
+    id: 'moveChart',
+    afterEvent(chart, args){
+        const {ctx, canvas, chartArea:{left, right, top, bottom, width, height}}= chart;
+
+        canvas.addEventListener('mousemove', (event) => {
+            const x = args.event.x;
+            const y = args.event.y;
+
+            if(x >= left - 14 && x <= left + 14 && y >= height / 2 + top - 14 && y <= height / 2 + top + 14){
+                canvas.style.crusor = 'pointer';
+            } else if(x >= right - 14 && x <= right + 14 && y >= height / 2 + top - 14 && y <= height / 2 + top + 14){
+                canvas.style.crusor = 'pointer';}
+                else{canvas.style.crusor = 'default';}
+
+        })
+
+    },
+    afterDraw(chart, args, pluginOptions){
+        const {ctx, chartArea:{left, right, top, bottom, width, height}}= chart;
+
+        const angle = Math.PI / 180;
+
+        ctx.beginPath();
+        ctx.lineWidth=3;
+        ctx.strokeStyle = '#1c4164';
+        ctx.fillStyle = '#F7F6FB';
+        ctx.arc(left, height/2 + top, 14, angle * 0, angle * 360, false); //ctx.arc(x, y, radius, angleS, angleE, ccw)
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+        //arrow left
+        ctx.beginPath();
+        ctx.lineWidth=3;
+        ctx.strokeStyle = '#1c4164';
+        ctx.moveTo(left + 5, height/2 + top - 7);
+        ctx.lineTo(left - 5, height/2 + top);
+        ctx.lineTo(left + 5, height/2 + top + 7);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth=3;
+        ctx.strokeStyle = '#1c4164';
+        ctx.fillStyle = '#F7F6FB';
+        ctx.arc(right, height/2 + top, 14, angle * 0, angle * 360, false); //ctx.arc(x, y, radius, angleS, angleE, ccw)
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+        //arrow right
+        ctx.beginPath();
+        ctx.lineWidth=3;
+        ctx.strokeStyle = '#1c4164';
+        ctx.moveTo(right - 5, height/2 + top - 7);
+        ctx.lineTo(right + 5, height/2 + top);
+        ctx.lineTo(right - 5, height/2 + top + 7);
+        ctx.stroke();
+        ctx.closePath();
+
+
+    }
+}
 
 const stackedChart = new Chart(ctx, {
 	type: 'bar',
@@ -50,6 +113,11 @@ const stackedChart = new Chart(ctx, {
         ],
         borderWidth: 1,
         borderColor: '#1c4164',
+        layout:{
+            padding: {
+                right: 18
+            }
+        },
         scales: { 
             x: {
                 min: 0, 
@@ -59,7 +127,9 @@ const stackedChart = new Chart(ctx, {
                 beginAtZero: true
             }
           }
-    }
+    },
+    plugins:[moveChart]
+
 },{onAnimationComplete: function () {
     var sourceCanvas = this.chart.ctx.canvas;
     var copyWidth = this.scale.xScalePaddingLeft - 5;
@@ -73,6 +143,41 @@ const stackedChart = new Chart(ctx, {
 }}
 
 );
+
+stackedChart.ctx.onclick = buttonScroll();
+
+
+function buttonScroll(){
+    const {ctx, canvas, chartArea:{left, right, top, bottom, width, height}}= stackedChart;
+    canvas.addEventListener('click', (event) =>{
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientx - rect.left;
+        const y = event.clienty - rect.top;
+
+        if(x >= left - 14 && x <= left + 14 && y >= height / 2 + top - 14 && y <= height / 2 + top + 14){
+            stackedChart.options.scales.x.min = stackedChart.options.scales.x.min - 7;
+            stackedChart.options.scales.x.max = stackedChart.options.scales.x.max - 7;
+            if(stackedChart.options.scales.x.min <= 0){
+                stackedChart.options.scales.x.min = 0;
+                stackedChart.options.scales.x.max = 6;
+            }
+            
+        } else if(x >= right - 14 && x <= right + 14 && y >= height / 2 + top - 14 && y <= height / 2 + top + 14){
+            stackedChart.options.scales.x.min = stackedChart.options.scales.x.min + 7;
+            stackedChart.options.scales.x.max = stackedChart.options.scales.x.max + 7;
+            if(stackedChart.options.scales.x.max >= data.datasets[0].data.length){
+                stackedChart.options.scales.x.min = data.datasets[0].data.length - 7;
+                stackedChart.options.scales.x.max = data.datasets[0].data.length;
+            }
+            
+            
+        }
+        stackedChart.update();
+            
+
+    }
+    )
+}
 
 function scroller(scroll, chart){
     if(scroll.deltaY > 0){
@@ -259,4 +364,32 @@ function removeData(chart, val) {
     });
 
     chart.update();
+}
+
+$(document).ready( function () {
+    var table = $('#unitstable').DataTable();
+    
+    $(".dataTables_empty").text("اطلاعاتی جهت نمایش وجود ندارد.");
+  } );
+  
+
+  document.querySelector('.scrollable').forEach(function(item){
+    item.addEventListener('wheel', preventScroll);
+    window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+    window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+    window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+    window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+});
+
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
 }

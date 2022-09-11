@@ -70,15 +70,17 @@
  </div>
      
     <div class="" id="add-unit-table">
-      <form action="submit.php" method="post">
+      <form action="units.html" method="post">
         <div class="tablecontainer" id="report">
           <div class="table-responsive">
-         <table id="empTable" class="display table"></table>
+         <table id="empTable" class="display table">
+
+         </table>
           </div>
           
         </div>
         <div class="add-button" style="margin-right: 50px;">
-          <input type="button" id="bt" value="ذخیره تغییرات" class="btn btn-block" onclick="submit()" />
+          <input type="button" id="btn" value="ذخیره تغییرات" class="btn btn-block" onclick="submit()" />
         </div>
        
        </form>
@@ -96,11 +98,10 @@
 
   <script>
     let arrHead = new Array();
-    arrHead = ['', 'طبقه', 'واحد', 'نام و نام خانوادگی', 'اطلاعات تماس']; // table headers.
+    arrHead = ['', 'طبقه', 'واحد', 'نام و نام خانوادگی', 'اطلاعات تماس']; 
 
     let createTable = () => {
         
-
         let tr = empTable.insertRow(-1);
 
         var thead = document.getElementById('empTable').createTHead ();
@@ -138,7 +139,7 @@
 
                 // set the attributes.
                 button.setAttribute('type', 'button');
-                button.setAttribute('value', 'Remove');
+                button.setAttribute('value', 'حذف');
 
                 // add button's "onclick" event.
                 button.setAttribute('onclick', 'removeRow(this)');
@@ -164,22 +165,22 @@
 
     // function to extract and submit table data.
     let submit = () => {
-        let myTab = document.getElementById('empTable');
-        let arrValues = new Array();
+        let dataTable = document.getElementById('empTable');
+        let arrValues = [];
 
-        // loop through each row of the table.
-        for (row = 1; row < myTab.rows.length - 1; row++) {
-            // loop through each cell in a row.
-            for (c = 0; c < myTab.rows[row].cells.length; c++) {
-                let element = myTab.rows.item(row).cells[c];
-                if (element.childNodes[0].getAttribute('type') == 'text') {
-                    arrValues.push("'" + element.childNodes[0].value + "'");
-                }
-            }
-        }
+        $("table#emptable tr").each(function() {
+        var rowDataArray = [];
+        var tableData = $(this).find('td');
+        if (tableData.length > 0) {
+            tableData.each(function() { 
+                rowDataArray.push($(this).text());
+            });
+            arrValues.push(rowDataArray);
+         }
+    });
+        alert(arrValues);
+        localStorage.setItem( 'arrValues', JSON.stringify( arrValues ) );
         
-        // finally, show the result in the console.
-        console.log(arrValues);
     }
 </script>
  

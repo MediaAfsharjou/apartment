@@ -99,63 +99,34 @@
       </div>
     </div>
 
+
     <div class="chartcontainer">
-      <canvas id="tenantReportChart"></canvas>
+      <div class="chartWrapper">
+        <div class="chartAreaWrapper">
+            <canvas id="tenantReportChart"></canvas>
+        </div>
+        <canvas id="ChartAxis" height="300" width="0"></canvas>
     </div>
+  </div>
 
   <script>
-    document.getElementById("username").innerHTML=localStorage.getItem("username");
-    document.getElementById("floor").innerHTML=localStorage.getItem("floor");
-    document.getElementById("unit").innerHTML=localStorage.getItem("unit");
-    document.getElementById("contactinfo").innerHTML=localStorage.getItem("contactinfo");
-    document.getElementById("currentmonth").innerHTML=localStorage.getItem("currentmonth");
-    document.getElementById("expenses").innerHTML=localStorage.getItem("expenses");
-    document.getElementById("total").innerHTML=localStorage.getItem("total");
-    document.getElementById("image").src = localStorage.getItem("image");
+    document.getElementById("username").innerHTML=sessionStorage.getItem("username");
+    document.getElementById("floor").innerHTML=sessionStorage.getItem("floor");
+    document.getElementById("unit").innerHTML=sessionStorage.getItem("unit");
+    document.getElementById("image").src = sessionStorage.getItem("image");
+    document.getElementById("contactinfo").innerHTML=sessionStorage.getItem("contactinfo");
+    document.getElementById("currentmonth").innerHTML=sessionStorage.getItem("currentmonth");
+    document.getElementById("expenses").innerHTML=sessionStorage.getItem("expenses");
+    document.getElementById("total").innerHTML=sessionStorage.getItem("total");
+    
 
   </script>
 
 
 
- <script src = "script.js"> </script>
+ <script src = "script-tenant.js"> </script>
 
- <script>
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'شارژ پرداخت شده',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [20, 10, 30, 30, 20, 15, 25],
-    },
-    {
-      label: 'اجاره پرداخت شده',
-      backgroundColor: 'rgb(2,245,63)',
-      borderColor: 'rgb(2,245,63)',
-      data: [30, 25, 35, 60, 50, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-
-  const myChart = new Chart(
-    document.getElementById('tenantReportChart'),
-    config
-  );
-</script>
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
  </body>

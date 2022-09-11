@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="jquery.dataTables.min.css">
     
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  
  <link rel=”stylesheet” href=”css/datatables/datatables.css”>
  </head>
@@ -78,87 +79,45 @@
              <td><div class="header__item"><a id="info" class="filter__link" href="#">اطلاعات تماس</a></div></td>
            </tr>  
          </thead>  
-         <tbody>  
-           <tr>  
-             <td class="table-data">3</td>
-             <td class="table-data">1</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">123</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">2</td>
-             <td class="table-data">6</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">234</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">1</td>
-             <td class="table-data">4</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">345</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">2</td>
-             <td class="table-data">0</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">456</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">2</td>
-             <td class="table-data">0</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">567</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">3</td>
-             <td class="table-data">1</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">678</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">2</td>
-             <td class="table-data">6</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">789</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">1</td>
-             <td class="table-data">4</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">890</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">2</td>
-             <td class="table-data">0</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">901</td>
-           </tr>  
-           <tr>  
-             <td class="table-data">2</td>
-             <td class="table-data">0</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">012</td>
-           </tr> 
-           <tr>  
-             <td class="table-data">1</td>
-             <td class="table-data">5</td>
-             <td class="table-data">نام</td>
-             <td class="table-data">123</td>
-           </tr> 
-           
+         <tbody id="unitstablebody">    
          </tbody>  
      </table>
      <div class="add-button">
       <a href="add-unit.html" class="filter__link">  
       <input type="button" value="افزودن واحد جدید" class="btn btn-block"></a>
+      
      </div>
      </div>
      
    </div>
 
-  
-   
-  <script src = "script.js"> </script>
+  <script>
+    let arrValues = [JSON.parse( localStorage.getItem('arrValues') )];//'1','2','media','12345'
+
+    var myTable = document.getElementById("unitstablebody"),
+    row = myTable.insertRow(), cell;
+
+// LOOP THROUGH ARRAY & GENERATE ROWS-CELLS
+var perrow = 4; // 4 CELLS PER ROW
+arrValues.forEach((value, i) => {
+  // ADD CELL
+  cell = row.insertCell();
+  cell.innerHTML = value;
+ 
+  // CLICK ON CELL TO DO SOMETHING
+  // cell.onclick = FUNCTION;
+  //Storage.removeItem();////////////////////////////////////////
+ 
+  // BREAK INTO NEXT ROW
+  var next = i + 1;
+  if (next%perrow==0 && next!=arrValues.length) { row = myTable.insertRow(); }
+});
+
+// ATTACH TABLE TO CONTAINER
+document.getElementById("tablecontainer").appendChild(myTable);
+  </script>
+
+
  
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
  <script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
@@ -173,6 +132,9 @@
  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
      <script src="js/datatables/datatables.js"></script>
+
+     
+<script src = "script.js"> </script>
      
  
  </body>

@@ -17,14 +17,14 @@
 
     <script src="node_modules/persian-date/dist/persian-date.js" type="text/javascript"></script>
  <script type="text/javascript">
-     new persianDate().format(); // "۱۳۹۶-۰۱-۱۱ ۲۳:۳۳:۲۷ ب ظ" 
+     //new persianDate().format(); // "۱۳۹۶-۰۱-۱۱ ۲۳:۳۳:۲۷ ب ظ" 
  </script>
 
 <link rel=”stylesheet” href=”css/datatables/datatables.css”>
 
 
  </head>
- <body id="body-pd" onload="makeTableScroll();" style="background-color: #b9e8f0;">
+ <body id="body-pd" style="background-color: #b9e8f0;">
 
   <div class="m-4">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -77,8 +77,8 @@
     </nav>
 </div>
 
-                    <div class="tablecontainer" id="report">
-                      <div class="table-responsive">
+                    <div class="tablecontainer" id="reportchargecontainer">
+                      <div class="table-responsive" id="reportchargetablecontainer">
 
                       <table id="datatable" name="chargetable" class="display table" width="100%">
                             
@@ -96,10 +96,20 @@
                             
                             <tbody>  
                               <tr>  
-                                <td class="table-data">3</td>
+                                <td class="table-data">1</td>
                                 <td class="table-data">1</td>
                                 <td class="table-data">نام</td>
                                 <td class="table-data">1400/1</td>>
+                                <td class="table-data">30</td>
+                                <td class="table-data">انجام نشد</td>
+                                <td class="table-data">عکس</td>
+                                
+                              </tr>  
+                              <tr>  
+                                <td class="table-data">1</td>
+                                <td class="table-data">2</td>
+                                <td class="table-data">نام</td>
+                                <td class="table-data">1400/2</td>>
                                 <td class="table-data">40</td>
                                 <td class="table-data">انجام نشد</td>
                                 <td class="table-data">عکس</td>
@@ -107,194 +117,14 @@
                               </tr>  
                               <tr>  
                                 <td class="table-data">2</td>
-                                <td class="table-data">6</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/2</td>>
-                                <td class="table-data">45</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">4</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/3</td>>
-                                <td class="table-data">50</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/4</td>>
-                                <td class="table-data">30</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/5</td>>
-                                <td class="table-data">60</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">3</td>
-                                <td class="table-data">1</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/6</td>>
-                                <td class="table-data">45</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">6</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/7</td>>
-                                <td class="table-data">35</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">4</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/8</td>>
-                                <td class="table-data">25</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/9</td>>
-                                <td class="table-data">60</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/10</td>>
-                                <td class="table-data">65</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr> 
-                              <tr>  
-                                <td class="table-data">1</td>
                                 <td class="table-data">5</td>
                                 <td class="table-data">نام</td>
-                                <td class="table-data">1400/11</td>>
-                                <td class="table-data">40</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr> 
-                              <tr>  
-                                <td class="table-data">3</td>
-                                <td class="table-data">1</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/1</td>>
-                                <td class="table-data">40</td>
-                                <td class="table-data">انجام نشد</td>
+                                <td class="table-data">1400/3</td>>
+                                <td class="table-data">20</td>
+                                <td class="table-data">انجام شد</td>
                                 <td class="table-data">عکس</td>
                                 
                               </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">6</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/2</td>>
-                                <td class="table-data">45</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">4</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/3</td>>
-                                <td class="table-data">50</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/4</td>>
-                                <td class="table-data">30</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/5</td>>
-                                <td class="table-data">60</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">3</td>
-                                <td class="table-data">1</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/6</td>>
-                                <td class="table-data">45</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">6</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/7</td>>
-                                <td class="table-data">35</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">4</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/8</td>>
-                                <td class="table-data">25</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/9</td>>
-                                <td class="table-data">60</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr>  
-                              <tr>  
-                                <td class="table-data">2</td>
-                                <td class="table-data">0</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/10</td>>
-                                <td class="table-data">65</td>
-                                <td class="table-data">انجام شد</td>
-                                <td class="table-data">عکس</td>
-                              </tr> 
-                              <tr>  
-                                <td class="table-data">1</td>
-                                <td class="table-data">5</td>
-                                <td class="table-data">نام</td>
-                                <td class="table-data">1400/11</td>>
-                                <td class="table-data">40</td>
-                                <td class="table-data">انجام نشد</td>
-                                <td class="table-data">عکس</td>
-                              </tr> 
                               
                             </tbody>  
                         </table>
@@ -314,6 +144,34 @@
 
 
  <script src = "script.js"> </script>
+ <script>
+
+var table = document.getElementById('datatable');
+var chargeDatesArray = [];
+    
+    var date = 3;
+    for (var r = 1, n = table.rows.length; r < n; r++) {
+
+      chargeDatesArray.push(new Date(table.rows[r].cells[date].innerHTML)
+        .toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' }));
+        //.toLocaleDateString('fa-IR')
+    }
+
+//sum of all totals from table
+        chargeTotalsArray = [];
+        var total = 4;
+        var result_total = 0;
+        for (var r = 1, n = table.rows.length; r < n; r++) {
+          chargeTotalsArray.push(parseInt(table.rows[r].cells[total].innerHTML));
+            //result_total = result_total + parseInt(table.rows[r].cells[total].innerHTML);
+        
+        }
+
+window.localStorage.setItem('chargeDatesArray', JSON.stringify(chargeDatesArray));
+window.localStorage.setItem('chargeTotalsArray', JSON.stringify(chargeTotalsArray));
+
+ </script>
+
  
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
  <script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>

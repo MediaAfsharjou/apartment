@@ -116,46 +116,54 @@
  <script src = "script.js"> </script>
 
  <script>
-   function getData()
+  function getData()
 {
-    var username = document.getElementById("username").value;
-    localStorage.setItem("username", username);
-    var floor= document.getElementById("floor").value; 
-    localStorage.setItem("floor", floor);
-    var unit= document.getElementById("unit").value; 
-    localStorage.setItem("unit", unit);
-    var contactinfo= document.getElementById("contactinfo").value; 
-    localStorage.setItem("contactinfo", contactinfo);   
-    var imgPath = document.querySelector('input[type=file]').files[0];
-    var reader = new FileReader();
+   var username = document.getElementById("username").value;
+   sessionStorage.setItem("username", username);
+   var floor= document.getElementById("floor").value; 
+   sessionStorage.setItem("floor", floor);
+   var unit= document.getElementById("unit").value; 
+   sessionStorage.setItem("unit", unit);
+   var contactinfo= document.getElementById("contactinfo").value; 
+   sessionStorage.setItem("contactinfo", contactinfo);   
+   var imgPath = document.querySelector('input[type=file]').files[0];
+   var reader = new FileReader();
 
-    reader.addEventListener("load", function () {
-    // convert image file to base64 string and save to localStorage
-      localStorage.setItem("image", reader.result);
-    }, false);
+   reader.addEventListener("load", function () {
+   // convert image file to base64 string and save to sessionStorage
+   sessionStorage.setItem("image", reader.result);
+   }, false);
 
-    if (imgPath) {
-        reader.readAsDataURL(imgPath);
-    }
+   if (imgPath) {
+       reader.readAsDataURL(imgPath);
+   }
 }
- </script>
+</script>
+<script>
+  document.getElementById("username").value=sessionStorage.getItem("username");
+  document.getElementById("floor").value=sessionStorage.getItem("floor");
+  document.getElementById("unit").value=sessionStorage.getItem("unit");
+  document.getElementById("contactinfo").value=sessionStorage.getItem("contactinfo");
+  document.getElementById("image").src = sessionStorage.getItem("image");
 
- <script>
-   function previewFile() {
-  const preview = document.querySelector('img');
-  const file = document.querySelector('input[type=file]').files[0];
-  const reader = new FileReader();
+</script>
 
-  reader.addEventListener("load", () => {
-    // convert image file to base64 string
-    preview.src = reader.result;
-  }, false);
+<script>
+  function previewFile() {
+ const preview = document.querySelector('img');
+ const file = document.querySelector('input[type=file]').files[0];
+ const reader = new FileReader();
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
+ reader.addEventListener("load", () => {
+   // convert image file to base64 string
+   preview.src = reader.result;
+ }, false);
+
+ if (file) {
+   reader.readAsDataURL(file);
+ }
 }
- </script>
+</script>
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
  </body>
